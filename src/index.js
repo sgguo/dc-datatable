@@ -21,6 +21,8 @@ export class Datatable extends BaseMixin {
     this._enableHeader = true;
     this._enableFooter = false;
     this._enableAutoWidth = false;
+    this._labels = undefined;
+    this._headerLabels = undefined;
 
     this._mandatoryAttributes(['dimension']);
 
@@ -66,6 +68,12 @@ export class Datatable extends BaseMixin {
       }
     }
 
+    if (this._headerLabels) {
+      transformedData.headings = transformedData.headings.map(item => {
+        return this._headerLabels[item] || item;
+      });
+    }
+
     return {
       data: transformedData,
       columns: this._columns,
@@ -78,6 +86,7 @@ export class Datatable extends BaseMixin {
       scrollY: this._enableScrolling && this._scrollY,
       searchable: this._enableSearch,
       sortable: this._enableSort,
+      labels: this._labels,
     };
   }
 
@@ -94,6 +103,24 @@ export class Datatable extends BaseMixin {
       return this._columns;
     }
     this._columns = columns;
+    return this;
+  }
+
+  headerLabels(headerLabels) {
+    if (!arguments.length) {
+      return this._headerLabels;
+    }
+
+    this._headerLabels = headerLabels;
+    return this;
+  }
+
+  labels(labels) {
+    if (!arguments.length) {
+      return this._labels;
+    }
+
+    this._labels = labels;
     return this;
   }
 

@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>dc-datatable</title>
-    <meta charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../node_modules/simple-datatables/dist/style.css"
-    />
-  </head>
-  <body>
-    <div id="container0" class="chart-container"></div>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/d3@5.12.0/dist/d3.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/crossfilter2@1.4.7/crossfilter.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/dc@4.0.0-beta.5/dist/dc.min.js"
-    ></script>
-    <script type="text/javascript" src="../dist/umd/dc-datatable.js"></script>
-    <script type="text/javascript">
-      d3.csv('example.csv').then(experiments => {
-        const ndx = crossfilter(experiments);
-        const fmt = d3.format('02d');
-        const runDimension = ndx.dimension(function(d) {
-          return [fmt(+d.Expt), fmt(+d.Run)];
-        });
-        const chart = new dcDatatable.Datatable('#container0', 'group1');
-        chart.dimension(runDimension);
 
-        chart.render();
+<head>
+  <title>dc-datatable</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../node_modules/simple-datatables/dist/style.css" />
+</head>
+
+<body>
+  <div id="container0" class="chart-container"></div>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/d3@5.12.0/dist/d3.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/crossfilter2@1.4.7/crossfilter.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dc@4.0.0-beta.5/dist/dc.min.js"></script>
+  <script type="text/javascript" src="../dist/umd/dc-datatable.js"></script>
+  <script type="text/javascript">
+    d3.csv('example.csv').then(experiments => {
+      const ndx = crossfilter(experiments);
+      const fmt = d3.format('02d');
+      const runDimension = ndx.dimension(function (d) {
+        return [fmt(+d.Expt), fmt(+d.Run)];
       });
-    </script>
-  </body>
+      const chart = new dcDatatable.Datatable('#container0', 'group1');
+      chart.dimension(runDimension);
+
+      chart.labels = {
+        placeholder: "搜索...",
+        perPage: "{select}个/页",
+        noRows: "未找到任何实体",
+        info: "展示从{start}到{end}的实体（共{rows}个）",
+      }
+
+      chart.render();
+    });
+  </script>
+</body>
+
 </html>

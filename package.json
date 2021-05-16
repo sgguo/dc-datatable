@@ -1,7 +1,7 @@
 {
-  "name": "dc-datatable",
-  "version": "1.0.1",
-  "description": "jquery-free lightweight datatable for dc.js",
+  "name": "dc-table",
+  "version": "1.1.0",
+  "description": "jquery-free lightweight datatable for dc.js, fork from dc-datatable, provide more options for data table",
   "main": "dist/index.js",
   "jsdelivr": "dist/umd/dc-datatable.js",
   "unpkg": "dist/umd/dc-datatable.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/privateOmega/dc-datatable.git"
+    "url": "https://github.com/sgguo/dc-datatable.git"
   },
   "keywords": [
     "dc.js",
@@ -26,12 +26,12 @@
     "datatable",
     "table"
   ],
-  "author": "privateOmega <privateOmega@protonmail.com>",
+  "author": "sgguo <sgguo@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/privateOmega/dc-datatable/issues"
+    "url": "https://github.com/sgguo/dc-datatable/issues"
   },
-  "homepage": "https://github.com/privateOmega/dc-datatable#readme",
+  "homepage": "https://github.com/sgguo/dc-datatable#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-json": "^4.0.1",
